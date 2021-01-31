@@ -1,6 +1,6 @@
-import { useMemo } from 'react';
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
-import getConfig from 'next/config';
+import { useMemo } from "react";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import getConfig from "next/config";
 
 const { publicRuntimeConfig } = getConfig();
 const { BACKEND_URL } = publicRuntimeConfig;
@@ -9,10 +9,10 @@ let apolloClient;
 
 function createApolloClient() {
   return new ApolloClient({
-    ssrMode: typeof window === 'undefined',
+    ssrMode: typeof window === "undefined",
     link: new HttpLink({
       uri: BACKEND_URL, // Server URL (must be absolute)
-      credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+      credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
     }),
     cache: new InMemoryCache({}),
   });
@@ -30,7 +30,7 @@ export function initializeApollo(initialState = null) {
     _apolloClient.cache.restore({ ...existingCache, ...initialState });
   }
   // For SSG and SSR always create a new Apollo Client
-  if (typeof window === 'undefined') return _apolloClient;
+  if (typeof window === "undefined") return _apolloClient;
   // Create the Apollo Client once in the client
   if (!apolloClient) apolloClient = _apolloClient;
 
@@ -40,3 +40,4 @@ export function initializeApollo(initialState = null) {
 export function useApollo(initialState) {
   const store = useMemo(() => initializeApollo(initialState), [initialState]);
   return store;
+}
