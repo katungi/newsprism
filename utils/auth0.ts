@@ -1,9 +1,10 @@
-import auth0 from '@auth0/nextjs-auth0'
+import { initAuth0 } from '@auth0/nextjs-auth0'
 import getConfig from 'next/config'
 
 const { serverRuntimeConfig } = getConfig();
 
 const { auth, cookieSecret } = serverRuntimeConfig;
+
 export default initAuth0({
     ...auth,
     session: {
@@ -18,4 +19,3 @@ export default initAuth0({
         clockTolerance: 10000
     }
 });
- 
