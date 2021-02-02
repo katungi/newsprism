@@ -1,6 +1,6 @@
 # Getting Started with Nextjs with Prisma and Graphql
 
-## This app is made using typescript instead of Javascript.
+## This app is made using typescript instead of Javascript
 
 ## The server uses graphql instead of REST for simplicity
 
