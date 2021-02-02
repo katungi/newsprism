@@ -15,17 +15,17 @@ const cors = Cors();
 
 const handler = new ApolloServer({
   schema
-}).createHandler({
+});
+
+// export default cors((req, res) => {
+
+//   if (req.method === 'options') {
+//     return res.status(200).send()
+//   }
+//   return handler(req, res)
+// })
+
+
+export default handler.createHandler({
   path: '/api/graphql'
-})
-
-export default cors((req, res) => {
-
-  if (req.method === 'options') {
-    return res.status(200).send()
-  }
-  return handler(req, res)
-})
-
-
-// export default handler;
+});
