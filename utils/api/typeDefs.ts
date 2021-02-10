@@ -1,28 +1,40 @@
 import { gql } from 'apollo-server-micro';
 
 export const typeDefs = gql`
-type Feed {
+type feed {
   id: String
   name: String
   url: String
 }
-input FeedInput{
+type bundle {
+  id: String
+  name: String
+  description: String
+}
+type bundleInput {
   id: String
 }
-input FeedCreateInput {
+type bundleCreateInput{
+  id: String
+  name: String
+  description: String
+}
+input feedInput{
+  id: String
+}
+input feedCreateInput {
 id: String
 url: String
 name: String
 }
-input Feed
-  type Query {
+type Query {
     hello: String
-    feed(data: FeedInput): Feed
-    feeds: [Feed]
+    feed(data: feedInput): feed
+    feeds: [feed]
   }
 
   type Mutation {
-    createFeed(data: FeedCreateInput):Feed
+    createFeed(data: feedCreateInput):feed
   }
 
 `;

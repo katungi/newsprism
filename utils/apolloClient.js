@@ -15,7 +15,7 @@ function createApolloClient() {
       credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
     }),
     cache: new InMemoryCache({}),
-  });
+  });  
 }
 
 export function initializeApollo(initialState = null) {
