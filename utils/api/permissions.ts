@@ -8,6 +8,6 @@ const rules = {
 };
 export const permissions = shield({
   Query: {
-    hello: rules.isAuthenticated
+    //hello: rules.isAuthenticated
   }
 })
